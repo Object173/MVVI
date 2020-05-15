@@ -51,7 +51,5 @@ dependencies {
 
     // test
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.23.0'
-    testImplementation 'com.nhaarman:mockito-kotlin:1.6.0'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
 }

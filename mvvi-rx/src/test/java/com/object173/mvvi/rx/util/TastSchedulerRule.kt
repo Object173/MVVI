@@ -1,4 +1,4 @@
-package com.object173.mvvi.rx
+package com.object173.mvvi.rx.util
 
 import io.reactivex.Scheduler
 import io.reactivex.android.plugins.RxAndroidPlugins
@@ -19,8 +19,8 @@ class TestSchedulerRule(private val scheduler: Scheduler = immediate) : TestRule
         }
     }
 
-    override fun apply(base: Statement, d: Description): Statement {
-        return object : Statement() {
+    override fun apply(base: Statement, d: Description): Statement =
+        object : Statement() {
             override fun evaluate() {
                 RxJavaPlugins.setIoSchedulerHandler { scheduler }
                 RxJavaPlugins.setComputationSchedulerHandler { scheduler }
@@ -36,5 +36,4 @@ class TestSchedulerRule(private val scheduler: Scheduler = immediate) : TestRule
                 }
             }
         }
-    }
 }
