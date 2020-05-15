@@ -11,7 +11,7 @@ import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 
-open class MvviViewModelFlow<ViewAction, ViewState, ViewEvent>(
+open class MvviFlowViewModel<ViewAction, ViewState, ViewEvent>(
     processor: MvviFlowProcessor<ViewAction, ViewState>,
     reducer: MvviReducer<ViewAction, ViewState, ViewEvent>,
     initialState: ViewState,

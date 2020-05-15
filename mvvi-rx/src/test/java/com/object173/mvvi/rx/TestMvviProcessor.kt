@@ -5,7 +5,7 @@ import com.object173.mvvi.rx.model.TestViewState
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.withLatestFrom
 
-internal class TestMvviProcessor : MvviProcessorRx<TestViewAction, TestViewState> {
+internal class TestMvviProcessor : MvviRxProcessor<TestViewAction, TestViewState> {
 
     override fun bind(actions: Observable<TestViewAction>,
                       states: Observable<TestViewState>): Observable<TestViewAction> =

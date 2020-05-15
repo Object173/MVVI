@@ -18,7 +18,7 @@ internal class MvviViewModelTest {
     val testSchedulerRule = TestSchedulerRule()
 
     private val viewModel by lazy {
-        MvviViewModelRx(MvviRxProcessorCommon(TestMvviProcessor()),
+        MvviRxViewModel(MvviRxCommonProcessor(TestMvviProcessor()),
                         TestMvviRouter(),
                         TestViewState.Initial)
     }

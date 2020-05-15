@@ -12,8 +12,8 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.withLatestFrom
 import io.reactivex.schedulers.Schedulers
 
-class MvviViewModelRx<ViewAction, ViewState, ViewEvent>(
-    processor: MvviProcessorRx<ViewAction, ViewState>,
+class MvviRxViewModel<ViewAction, ViewState, ViewEvent>(
+    processor: MvviRxProcessor<ViewAction, ViewState>,
     reducer: MvviReducer<ViewAction, ViewState, ViewEvent>,
     initialState: ViewState
 ) : MvviViewModel<ViewAction, ViewState, ViewEvent>() {

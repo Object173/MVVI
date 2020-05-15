@@ -2,7 +2,7 @@ package com.object173.mvvi.sample.feature.user.di
 
 import com.object173.mvvi.core.MvviViewModel
 import com.object173.mvvi.flow.MvviFlowProcessorCommon
-import com.object173.mvvi.flow.MvviViewModelFlow
+import com.object173.mvvi.flow.MvviFlowViewModel
 import com.object173.mvvi.flow.util.DispatcherProvider
 import com.object173.mvvi.sample.feature.user.data.UserDataSource
 import com.object173.mvvi.sample.feature.user.data.UserDataSourceImpl
@@ -37,7 +37,7 @@ object UserModule {
 
     private val userPresentationModule = module {
         viewModel {
-            MvviViewModelFlow(
+            MvviFlowViewModel(
                 MvviFlowProcessorCommon(SearchUserProcessor(get())),
                 UserReducer(),
                 UserViewState.Empty,
