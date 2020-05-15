@@ -1,0 +1,5 @@
+rootProject.name='MVVI'
+include ':sample'
+include ':mvvi-rx'
+include ':mvvi-flow'
+include ':mvvi-core'
