@@ -1,4 +1,4 @@
-package com.object173.mvvi.flow
+package com.object173.mvvi.flow.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.*

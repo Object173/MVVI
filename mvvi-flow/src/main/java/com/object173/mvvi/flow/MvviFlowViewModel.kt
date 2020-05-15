@@ -1,6 +1,6 @@
 package com.object173.mvvi.flow
 
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.object173.mvvi.core.MvviReducer
 import com.object173.mvvi.core.MvviViewModel
@@ -21,10 +21,7 @@ open class MvviFlowViewModel<ViewAction, ViewState, ViewEvent>(
     private val stateChannel = BroadcastChannel<ViewState>(Channel.CONFLATED)
     private val actionChannel = BroadcastChannel<ViewAction>(Channel.BUFFERED)
 
-    override val viewState = stateChannel
-        .asFlow()
-        .distinctUntilChanged()
-        .asLiveData(viewModelScope.coroutineContext)
+    override val viewState = MutableLiveData<ViewState>(initialState)
 
     override val viewEvent = SingleLiveEvent<ViewEvent>()
 
@@ -40,6 +37,11 @@ open class MvviFlowViewModel<ViewAction, ViewState, ViewEvent>(
                 event?.let(viewEvent::setValue)
             }
             .flowOn(dispatcherProvider.Main)
+            .launchIn(viewModelScope)
+
+        stateFlow
+            .distinctUntilChanged()
+            .onEach { state -> viewState.value = state }
             .launchIn(viewModelScope)
 
         processor.bind(actionFlow, stateFlow)

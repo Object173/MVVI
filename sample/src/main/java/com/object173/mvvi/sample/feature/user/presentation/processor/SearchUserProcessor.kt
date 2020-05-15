@@ -10,7 +10,7 @@ class SearchUserProcessor(
     private val getUserUseCase: GetUserUseCase
 ) : MvviFlowProcessor<UserViewAction, UserViewState> {
 
-    override fun bind(actions: Flow<UserViewAction>, state: Flow<UserViewState>): Flow<UserViewAction> =
+    override fun bind(actions: Flow<UserViewAction>, states: Flow<UserViewState>): Flow<UserViewAction> =
         actions.filterIsInstance<UserViewAction.SearchUser>()
             .flatMapLatest { action ->
                 getUserUseCase(action.name)
